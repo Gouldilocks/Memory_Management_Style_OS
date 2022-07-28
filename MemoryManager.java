@@ -37,7 +37,7 @@ class MemoryManager
     address = findMemoryBestFit(size);
 
     // Worst fit algorithm
-    else if (requestStyel == 'W')
+    else if (requestStyle == 'W')
     address = findMemoryWorstFit(size);
 
     // First Fit algorithm default
@@ -302,6 +302,7 @@ class MemoryManager
     ArrayList<Memory> holes = new ArrayList<Memory>();
     sortMemory();
 
+    // Get the holes from each of the already allocated spaces
     int startAddress = 0;
     for ( Memory memory : allocatedMemory)
     {
@@ -313,6 +314,13 @@ class MemoryManager
         holes.add(hole);
       }
       startAddress = end;
+    }
+
+    // Add the last hole
+    if (startAddress < memory.length)
+    {
+      Memory hole = new Memory(startAddress, memory.length - startAddress, " ");
+      holes.add(hole);
     }
     return holes;
   }
