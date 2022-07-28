@@ -83,8 +83,7 @@ public class Allocator {
 
   public static void main(String[] args)
   {
-    // int allocationSize = Integer.parseInt(args[0]);
-    int allocationSize = 10;
+    int allocationSize = Integer.parseInt(args[0]);
     memoryManager = new MemoryManager(allocationSize);
 
     //Run the program
